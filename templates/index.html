@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Irisify</title>
+     <link rel="icon" type="image/png" href="\static\logo2.png">
+
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+/* NAV LINKS → ZOOM EFFECT */
+nav a {
+  text-decoration: none;
+  color: #2563eb;
+  font-size: 23px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #1e3a8a;
+  transform: scale(1.2);   /* ZOOM */
+}
+
+/* LOGIN BUTTON → SHAKE + ZOOM */
+.login-btn {
+  padding: 8px 22px;
+  border-radius: 20px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.15);
+  animation: shake 0.4s;
+}
+
+        /* HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  background: linear-gradient(to right, #e0f2fe, #f8fafc);
+  animation: fadeIn 1.5s ease;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  color: #1e3a8a;
+}
+
+.hero-text p {
+  margin: 15px 0;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.hero-text button {
+  padding: 12px 35px;
+  border-radius: 30px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-text button:hover {
+  background: #1d4ed8;
+  transform: scale(1.1);
+}
+
+.hero-img img {
+  width: 400px;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* ABOUT */
+.about {
+  padding: 60px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 36px;
+  color: #1e3a8a;
+}
+
+.about-box {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  border-radius: 20px;
+  padding: 30px;
+  animation: slideUp 1.5s ease;
+}
+
+.about-box img {
+  width: 150px;
+  border-radius: 15px;
+}
+
+.about-box p {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+}
+
+        
+
+        /* FEATURE */
+.feature {
+  text-align: center;
+  padding: 50px;
+  background: #eff6ff;
+}
+
+/* PREDICT */
+.predict {
+  padding: 60px;
+  text-align: center;
+  color: #1e3a8a;
+    font-size: 20px;
+
+}
+
+.card {
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #cbd5f5;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 5px #2563eb;
+}
+
+.predict-btn {
+  margin-top: 20px;
+  padding: 12px 40px;
+  border-radius: 30px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.predict-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.1);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: white;
+  margin-top: 30px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(40px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes slideUp {
+  from {opacity:0; transform: translateY(80px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-15px);}
+  100% {transform: translateY(0);}
+}
+
+@keyframes shake {
+  0% {transform: translateX(0);}
+  25% {transform: translateX(-4px);}
+  50% {transform: translateX(4px);}
+  75% {transform: translateX(-4px);}
+  100% {transform: translateX(0);}
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.toggle-buttons button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: #e0e7ff;
+  color: #1e3a8a;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-buttons button.active {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
+
+.toggle-buttons button:hover {
+  transform: scale(1.08);
+}
+
+.result-box {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 15px;
+  background: #eff6ff;
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+#preview {
+  width: 150px;
+  display: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* MAIN SECTION */
+.info-section {
+  margin-top: 30px;
+  padding: 30px 0;
+}
+
+/* INNER CARD */
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px;
+
+background: white;
+box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border-radius: 20px;
+}
+
+/* TEXT SIDE */
+.info-text {
+  flex: 1;
+}
+
+.info-text h3 {
+  color: #1e3a8a;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.info-text h4 {
+  margin-top: 12px;
+  color: #2563eb;
+  font-size: 16px;
+}
+
+.info-text p {
+  margin-left: 6px;
+  margin-bottom: 5px;
+  font-size: 14.5px;
+  color: #334155;
+}
+
+/* IMAGE SIDE */
+.info-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* IMAGE STYLE */
+.info-image img {
+  width: 260px;
+  border-radius: 18px;
+  object-fit: cover;
+
+  /* soft glow instead of heavy shadow */
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.info-image img:hover {
+  transform: scale(1.05);
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info-section {
+  animation: fadeUp 0.6s ease;
+}
+
+
+
+.lang-icon {
+  font-size: 30px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* dropdown */
+.lang-menu {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  display: none;
+  overflow: hidden;
+  width: 140px;
+}
+
+.lang-menu div {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.lang-menu div:hover {
+  background: #f1f5f9;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <img src="static\logo2.png">
+    <span>Irisify</span>
+  </div>
+
+  <div class="nav-right">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#predict">Predict</a></li>
+    </ul>
+    <button class="login-btn">Login</button>
+    <!-- 🌐 ICON -->
+<div class="lang-icon" onclick="toggleLang()">
+  🌐
+</div>
+
+<!-- DROPDOWN MENU -->
+<div id="langMenu" class="lang-menu">
+  <div onclick="changeLang('en')">English</div>
+  <div onclick="changeLang('hi')">Hindi</div>
+  <div onclick="changeLang('mr')">Marathi</div>
+  <div onclick="changeLang('ta')">Tamil</div>
+</div>
+
+<!-- Hidden Google Translate -->
+<div id="google_translate_element" style="display:none;"></div>
+  </div>
+</nav>
+
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Iris Flower Prediction </h1>
+    <p>AI-powered System delivers precise classification of flower species using high-fidelity morphological measurements.</p>
+    <button onclick="scrollToPredict()" >Start Prediction</button>
+  </div>
+  <div class="hero-img">
+
+<img src="{{ url_for('static', filename='iris.png') }}">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <h2>About the System</h2>
+  <div class="about-box">
+    <img src="/static/About.png">
+    
+    <p>
+  This web application uses <b>Machine Learning algorithms</b> to analyze
+  <b>iris flower parameters</b> such as sepal length, sepal width, petal length,
+  and petal width. It predicts the <b>species of the iris flower</b> 
+  (Setosa, Versicolor, or Virginica).  
+  It supports <i>accurate classification</i> and assists researchers and students 
+  in understanding plant species identification.
+</p>
+
+  </div>
+</section>
+
+
+
+<!-- PREDICTION SECTION -->
+
+
+<!-- PREDICTION SECTION -->
+
+<section class="predict" id="predict">
+
+  <h2> Predict Iris Flower</h2><br><br>
+
+  <div class="card">
+
+    <!-- Toggle Buttons -->
+    <div class="toggle-buttons">
+      <button id="manualBtn" class="active" onclick="showManual()">
+        📊 Manual Input
+      </button>
+
+      <button id="imageBtn" onclick="showImage()">
+        📸 Upload Image
+      </button>
+    </div>
+
+    <!-- Manual Input Section -->
+    <div id="manualSection">
+      <h3>Enter Measurements</h3>
+
+      <div class="grid">
+        <input type="number" id="f1" placeholder="Sepal Length">
+        <input type="number" id="f2" placeholder="Sepal Width">
+        <input type="number" id="f3" placeholder="Petal Length">
+        <input type="number" id="f4" placeholder="Petal Width">
+      </div>
+
+      <button class="predict-btn" onclick="predict()">Predict</button>
+    </div>
+
+    <!-- Image Upload Section -->
+    <div id="imageSection" style="display:none;">
+      <h3>Upload Image</h3>
+
+      <input type="file" id="imageInput" onchange="previewImage()">
+      <br><br>
+
+      <div class="preview-container">
+        <img id="preview">
+      </div>
+
+      <br><br>
+
+      <button class="predict-btn" onclick="predictImage()">Predict from Image</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result-box">
+      <h3 id="result"></h3>
+      <p id="confidence"></p>
+    </div>
+
+  </div>
+
+</section>
+<br><br>
+<div id="infoHeading" style="display:none;">
+  <h1 style="color: #1e3a8a; font-family: sans-serif; text-align: center;">
+    Species facts
+  </h1>
+  <br>
+</div>
+<div id="infoSection" class="info-section" style="display:none;">
+
+  
+
+  <div class="info-container">
+
+    <!-- LEFT TEXT -->
+    <div class="info-text">
+      <h3 id="flowerName"></h3>
+      <div id="flowerDetails"></div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="info-image">
+      <img id="flowerImage" alt="Flower Image">
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+<script>
+
+function predict() {
+
+    document.getElementById("result").innerText = "";
+    document.getElementById("confidence").innerText = "";
+
+    let inputData = {
+        features: [
+            parseFloat(document.getElementById("f1").value),
+            parseFloat(document.getElementById("f2").value),
+            parseFloat(document.getElementById("f3").value),
+            parseFloat(document.getElementById("f4").value)
+        ]
+    };
+
+    fetch("/predict", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(inputData)
+    })
+    .then(res => res.json())
+    .then(res => {
+
+        document.getElementById("result").innerText = "🌸 " + res.result;
+        document.getElementById("confidence").innerText = "Confidence: " + res.confidence;
+
+        let info = plantInfo[res.result];
+
+        if (info) {
+           document.getElementById("infoHeading").style.display = "block";
+            document.getElementById("infoSection").style.display = "block";
+            document.getElementById("flowerName").innerText = res.result;
+            document.getElementById("flowerDetails").innerHTML = info.content;
+            document.getElementById("flowerImage").src = info.image;
+        }
+    });
+}
+
+
+function predictImage() {
+
+    let fileInput = document.getElementById("imageInput");
+    let file = fileInput.files[0];
+
+    document.getElementById("result").innerText = "";
+    document.getElementById("confidence").innerText = "";
+
+    if (!file) {
+        alert("Please select an image first!");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("image", file);
+
+    fetch("/predict-image", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(res => {
+
+        document.getElementById("result").innerText = "🌸 " + res.result;
+        document.getElementById("confidence").innerText = "Confidence: " + res.confidence;
+
+        let info = plantInfo[res.result];
+
+        if (info) {
+            document.getElementById("infoHeading").style.display = "block";
+            document.getElementById("infoSection").style.display = "block";
+            document.getElementById("flowerName").innerText = res.result;
+            document.getElementById("flowerDetails").innerHTML = info.content;
+            document.getElementById("flowerImage").src = info.image;
+        }
+    });
+}
+
+
+function showManual() {
+
+    document.getElementById("manualSection").style.display = "block";
+    document.getElementById("imageSection").style.display = "none";
+
+    document.getElementById("manualBtn").classList.add("active");
+    document.getElementById("imageBtn").classList.remove("active");
+
+    document.getElementById("result").innerText = "";
+    document.getElementById("confidence").innerText = "";
+    document.getElementById("preview").style.display = "none";
+    document.getElementById("infoSection").style.display = "none";
+    document.getElementById("infoHeading").style.display = "none";
+}
+
+
+function showImage() {
+    document.getElementById("manualSection").style.display = "none";
+    document.getElementById("imageSection").style.display = "block";
+
+    document.getElementById("manualBtn").classList.remove("active");
+    document.getElementById("imageBtn").classList.add("active");
+
+    document.getElementById("result").innerText = "";
+    document.getElementById("confidence").innerText = "";
+    document.getElementById("infoSection").style.display = "none";
+    document.getElementById("infoHeading").style.display = "none";
+}
+
+
+function previewImage() {
+    let file = document.getElementById("imageInput").files[0];
+    let preview = document.getElementById("preview");
+
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+    }
+}
+
+
+const plantInfo = {
+
+  "Setosa": {
+    image: "/static/sentosa.jpg",
+    content: `
+      <h4>🌿 Growing Conditions</h4>
+      <p><b>Climate:</b> Cold and temperate regions</p>
+      <p><b>Soil Type:</b> Well-drained sandy or loamy soil</p>
+      <p><b>Water Needs:</b> Moderate (low moisture tolerant)</p>
+      <p><b>Sunlight:</b> Full sunlight preferred</p>
+
+      <h4>🌍 Habitat</h4>
+      <p>Found in coastal areas and grasslands</p>
+      <p>Common in northern regions</p>
+
+      <h4>📌 Special Features</h4>
+      <p>Highly cold-resistant species</p>
+      <p>Simple structure, easy to classify</p>
+    `
+  },
+
+  "Versicolor": {
+    image: "/static/versicolor.jpg",
+    content: `
+      <h4>🌿 Growing Conditions</h4>
+      <p><b>Climate:</b> Temperate regions</p>
+      <p><b>Soil Type:</b> Wet, marshy soil</p>
+      <p><b>Water Needs:</b> High (requires moist conditions)</p>
+      <p><b>Sunlight:</b> Full to partial sunlight</p>
+
+      <h4>🌍 Habitat</h4>
+      <p>Found in wetlands and near water bodies</p>
+      <p>Thrives in marshy environments</p>
+
+      <h4>📌 Special Features</h4>
+      <p>Important for wetland ecosystems</p>
+      <p>Attractive flower used in decoration</p>
+    `
+  },
+
+  "Virginica": {
+    image: "/static/virginica.jpg",
+    content: `
+      <h4>🌿 Growing Conditions</h4>
+      <p><b>Climate:</b> Warm and humid regions</p>
+      <p><b>Soil Type:</b> Moist, rich soil</p>
+      <p><b>Water Needs:</b> Moderate to high</p>
+      <p><b>Sunlight:</b> Full sunlight preferred</p>
+
+      <h4>🌍 Habitat</h4>
+      <p>Found in lowlands and marshy areas</p>
+      <p>Common in southern regions</p>
+
+      <h4>📌 Special Features</h4>
+      <p>Larger and more vibrant flowers</p>
+      <p>Used in landscaping and research</p>
+    `
+  }
+
+};
+
+</script>
+
+
+
+<script>
+function toggleLang() {
+  let menu = document.getElementById("langMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function changeLang(lang) {
+  let select = document.querySelector(".goog-te-combo");
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event("change"));
+  }
+
+  // close menu after selection
+  document.getElementById("langMenu").style.display = "none";
+}
+</script>
+
+ <script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {pageLanguage: 'en'},
+    'google_translate_element'
+  );
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+ 
+
+
+
+</body>
+</html>
